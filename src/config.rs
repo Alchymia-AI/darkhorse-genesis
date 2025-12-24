@@ -2,7 +2,7 @@
 /// Developed by Alchymia AI | Lead Architect: Lifeofanisland
 ///
 /// This module centralizes the architectural hyperparameters and
-/// model metadata for the 5B SLM profile.
+/// model metadata for the 5B LLM profile.
 
 #[derive(Debug, Clone)]
 pub struct Config {
