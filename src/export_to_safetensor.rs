@@ -10,11 +10,11 @@ use std::path::Path;
 pub fn export_to_safetensors_raw(vs: &VarStore, export_path: &Path) -> anyhow::Result<()> {
     println!("--- 🐎 AlchymiaGen Weight Export ---");
     
-    // We utilize the named_variables() iterator to capture the exact
+    // Utilize the named_variables() iterator to capture the exact
     // hierarchy defined in model.rs, moe.rs, and attention.rs
     let variables = vs.variables();
     
-    // In tch-rs, we can save the entire VarStore as a named-tensor file
+    // In tch-rs, save the entire VarStore as a named-tensor file
     // which Python can read via torch.load or a custom parser.
     vs.save(export_path)?;
     
