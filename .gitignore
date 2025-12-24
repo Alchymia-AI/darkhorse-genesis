@@ -5,3 +5,4 @@ alch-env/
 hf_model_out/
 *.safetensors
 *.gguf
+.DS_Store
