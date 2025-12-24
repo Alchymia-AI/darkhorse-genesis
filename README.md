@@ -228,13 +228,6 @@ cargo run --release -- inference --params 1b --prompt "Write a Rust function."
 <pre><code>{"domain": "code", "text": "fn main() { println!(\"Alchymia AI\"); }"}
 {"domain": "math", "text": "The Riemann hypothesis is a conjecture that..."}
 <br class="ProseMirror-trailingBreak"></code></pre>
-<h3>2. Training Execution</h3>
-<p>To initiate training with a specific parameter scale and the <strong>Auxiliary-Loss-Free (ALF)</strong> balancing
-    strategy:</p>
-<pre><code># Train a 1B parameter model
-cargo run --release -- train --params 1b --data ./data/train_data.jsonl
-
-cargo run --release -- train --params 5b --data ./data/train_data.jsonl
 
 <div><h2>GGUF Support (Local &amp; Edge Inference)</h2><p>The <code>convert_to_gguf.py</code> script allows you to transform TorchScript/tch-rs models into GGUF format for use with <code>llama.cpp</code> or other GGUF-compatible backends.</p><h3>Features</h3><ul><li><p><strong>Auto-Detection</strong>: Automatically detects if the input is a standard <code>state_dict</code> or a <code>RecursiveScriptModule</code> (TorchScript).</p></li><li><p><strong>Architecture Mapping</strong>: Maps proprietary AlchymiaGen keys to standard GGUF tensor naming (MLA, MoE, and MTP support).</p></li><li><p><strong>Type Conversion</strong>: Standardizes weights to FP32 for broad compatibility.</p></li></ul><h3>Usage</h3><pre><code>python convert_to_gguf.py \
     --input model.ot \
@@ -347,6 +340,16 @@ cargo run --release -- train --params 5b --data ./data/train_data.jsonl
     This is expected when loading <code>.ot</code> files created by Rust-based training pipelines. The converter handles
     this internally by dispatching to <code>torch.jit.load</code>.</p>
 </div>
+
+<h3>2. Training Execution</h3>
+<p>To initiate training with a specific parameter scale and the <strong>Auxiliary-Loss-Free (ALF)</strong> balancing
+    strategy:</p>
+<pre><code># Train a 1B parameter model
+cargo run --release -- train --params 1b --data ./data/train_data.jsonl
+
+cargo run --release -- train --params 5b --data ./data/train_data.jsonl
+
+
 <br class="ProseMirror-trailingBreak"></code></pre>
 <h2>🚢 Production Deployment</h2>
 <h3>🐳 Containerization (Docker)</h3>
