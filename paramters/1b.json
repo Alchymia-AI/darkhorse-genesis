@@ -1,0 +1,13 @@
+{
+  "model_name": "Darkhorse Genesis 1B",
+  "hidden_size": 2048,
+  "num_heads": 16,
+  "head_dim": 128,
+  "n_layers": 18,
+  "kv_lora_rank": 256,
+  "q_lora_rank": 1024,
+  "moe_num_experts": 32,
+  "moe_top_k": 2,
+  "num_next_tokens": 1,
+  "vocab_size": 102400
+}
