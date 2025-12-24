@@ -1,0 +1,29 @@
+[package]
+name = "alchymia-darkhorse-genesis"
+version = "1.0.0"
+edition = "2021"
+authors = ["Lifeofanisland", "Alchymia AI Research Lab"]
+description = "An Experimental 5B MoE Model with MLA and MTP architecture"
+
+[dependencies]
+#PyTorch bindings for Rust (Requires Libtorch)
+tch = "0.22.0"
+#Error handling and logging
+anyhow = "1.0"
+log = "0.4"
+env_logger = "0.11.8"
+#Serialization/Deserialization for config and .jsonl data
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+#CLI Argument parsing
+clap = { version = "4.0", features = ["derive"] }
+#Performance tracking
+indicatif = "0.18.3"
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[[bin]]
+name = "alchymia-darkhorse-genesis"
+path = "src/main.rs"

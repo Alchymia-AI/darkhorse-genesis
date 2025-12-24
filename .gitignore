@@ -1,0 +1,6 @@
+*.ot
+target/
+*.lock
+alch-env/
+hf_model_out/
+*.safetensors
