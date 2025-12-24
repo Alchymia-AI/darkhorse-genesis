@@ -219,30 +219,19 @@ cargo run --release -- --prompt "Explain the laws of thermodynamics."
 # Inference using a specific parameter scale
 cargo run --release -- inference --params 1b --prompt "Write a Rust function."
 <br class="ProseMirror-trailingBreak"></code></pre>
-<h2>🧬 Data Pipeline &amp; Training</h2>
-<p>Darkhorse Genesis requires structured data to train its specialized expert domains (Math, Code, Legal, etc.).</p>
-<h3>1. Local Data Preparation</h3>
-<p>Populate a <code>data/</code> directory with <code>.jsonl</code> files. Each entry should include a domain tag to
-    assist the router.</p>
-<p><strong>Format (<code>train_data.jsonl</code>):</strong></p>
-<pre><code>{"domain": "code", "text": "fn main() { println!(\"Alchymia AI\"); }"}
-{"domain": "math", "text": "The Riemann hypothesis is a conjecture that..."}
-<br class="ProseMirror-trailingBreak"></code></pre>
 
-<div><h2>GGUF Support (Local &amp; Edge Inference)</h2><p>The <code>convert_to_gguf.py</code> script allows you to transform TorchScript/tch-rs models into GGUF format for use with <code>llama.cpp</code> or other GGUF-compatible backends.</p><h3>Features</h3><ul><li><p><strong>Auto-Detection</strong>: Automatically detects if the input is a standard <code>state_dict</code> or a <code>RecursiveScriptModule</code> (TorchScript).</p></li><li><p><strong>Architecture Mapping</strong>: Maps proprietary AlchymiaGen keys to standard GGUF tensor naming (MLA, MoE, and MTP support).</p></li><li><p><strong>Type Conversion</strong>: Standardizes weights to FP32 for broad compatibility.</p></li></ul><h3>Usage</h3><pre><code>python convert_to_gguf.py \
+<div><h3>GGUF Support</h3><p>The <code>convert_to_gguf.py</code> script allows you to transform TorchScript/tch-rs models into GGUF format for use with <code>llama.cpp</code> or other GGUF-compatible backends.</p><h3>Features</h3><ul><li><p><strong>Auto-Detection</strong>: Automatically detects if the input is a standard <code>state_dict</code> or a <code>RecursiveScriptModule</code> (TorchScript).</p></li><li><p><strong>Architecture Mapping</strong>: Maps proprietary AlchymiaGen keys to standard GGUF tensor naming (MLA, MoE, and MTP support).</p></li><li><p><strong>Type Conversion</strong>: Standardizes weights to FP32 for broad compatibility.</p></li></ul><h3>Usage</h3><pre><code>python convert_to_gguf.py \
     --input model.ot \
     --config config.json \
-    --output darkhorse-v1.gguf
+    --output darkhorse-genesis.gguf
 <br class="ProseMirror-trailingBreak"></code></pre>
-<h2>2. vLLM Support (Data Center Inference)</h2>
+<h3>vLLM Support </h3>
 <p>For high-throughput requirements, <code>darkhorse-genesis</code> is compatible with <strong>vLLM</strong> via the
     HuggingFace-standardized structure.</p>
 <h3>Direct Loading</h3>
 <p>vLLM can serve the model by pointing to the directory containing the <code>config.json</code> and the converted
     <code>.safetensors</code> or <code>.pt</code> weights.</p>
 <pre><code>vllm serve /path/to/darkhorse-genesis \
-    --model-type llama \
-    --trust-remote-code \
     --tensor-parallel-size 1
 <br class="ProseMirror-trailingBreak"></code></pre>
 <h3>Optimized Attention (MLA)</h3>
@@ -340,6 +329,18 @@ cargo run --release -- inference --params 1b --prompt "Write a Rust function."
     This is expected when loading <code>.ot</code> files created by Rust-based training pipelines. The converter handles
     this internally by dispatching to <code>torch.jit.load</code>.</p>
 </div>
+
+<h2>🧬 Data Pipeline &amp; Training</h2>
+<p>Darkhorse Genesis requires structured data to train its specialized expert domains (Math, Code, Legal, etc.).</p>
+<h3>1. Local Data Preparation</h3>
+<p>Populate a <code>data/</code> directory with <code>.jsonl</code> files. Each entry should include a domain tag to
+    assist the router.</p>
+<p><strong>Format (<code>train_data.jsonl</code>):</strong></p>
+<pre><code>{"domain": "code", "text": "fn main() { println!(\"Alchymia AI\"); }"}
+{"domain": "math", "text": "The Riemann hypothesis is a conjecture that..."}
+<br class="ProseMirror-trailingBreak"></code></pre>
+
+
 
 <h3>2. Training Execution</h3>
 <p>To initiate training with a specific parameter scale and the <strong>Auxiliary-Loss-Free (ALF)</strong> balancing
