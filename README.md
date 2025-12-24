@@ -220,10 +220,13 @@ cargo run --release -- --prompt "Explain the laws of thermodynamics."
 cargo run --release -- inference --params 1b --prompt "Write a Rust function."
 <br class="ProseMirror-trailingBreak"></code></pre>
 
-<div><h3>GGUF Support</h3><p>The <code>convert_to_gguf.py</code> script allows you to transform TorchScript/tch-rs models into GGUF format for use with <code>llama.cpp</code> or other GGUF-compatible backends.</p><h3>Features</h3><ul><li><p><strong>Auto-Detection</strong>: Automatically detects if the input is a standard <code>state_dict</code> or a <code>RecursiveScriptModule</code> (TorchScript).</p></li><li><p><strong>Architecture Mapping</strong>: Maps proprietary AlchymiaGen keys to standard GGUF tensor naming (MLA, MoE, and MTP support).</p></li><li><p><strong>Type Conversion</strong>: Standardizes weights to FP32 for broad compatibility.</p></li></ul><h3>Usage</h3><pre><code>python convert_to_gguf.py \
-    --input model.ot \
-    --config config.json \
-    --output darkhorse-genesis.gguf
+<div><h3>GGUF Support</h3><p>The <code>convert_to_gguf.py</code> script allows you to transform TorchScript/tch-rs models into GGUF format for use with <code>llama.cpp</code> or other GGUF-compatible backends.</p><h3>Features</h3><ul><li><p><strong>Auto-Detection</strong>: Automatically detects if the input is a standard <code>state_dict</code> or a <code>RecursiveScriptModule</code> (TorchScript).</p></li><li><p><strong>Architecture Mapping</strong>: Maps proprietary AlchymiaGen keys to standard GGUF tensor naming (MLA, MoE, and MTP support).</p></li><li><p><strong>Type Conversion</strong>: Standardizes weights to FP32 for broad compatibility.</p></li></ul><h3>Usage</h3><pre><code>python convert_hf_to_gguf.py  \
+    --model-dir ./hf_model_out
+<br class="ProseMirror-trailingBreak"></code></pre>
+<p><strong>Running with llama.cpp:</strong>
+To start the model using the <code>llama.cpp</code> main binary:</p>
+<pre><code>./build/bin/llama-cli -m darkhorse-genesis.gguf -n 128 -p "The future of AI in emerging markets is"
+
 <br class="ProseMirror-trailingBreak"></code></pre>
 <h3>vLLM Support </h3>
 <p>For high-throughput requirements, <code>darkhorse-genesis</code> is compatible with <strong>vLLM</strong> via the

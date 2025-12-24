@@ -49,6 +49,7 @@ def convert_alchymia_to_hf(input_pt_path, output_dir):
     config = {
         "architectures": ["DarkhorseGenesisForCausalLM"],
         "model_type": "darkhorse_genesis",
+        "model_name": "Darkhorse Genesis",
         "hidden_size": 512,
         "num_attention_heads": 8,
         "num_hidden_layers": 6,
