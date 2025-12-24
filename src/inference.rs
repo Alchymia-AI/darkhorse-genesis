@@ -1,5 +1,5 @@
 /// AlchymiaGen (1.0-gen) Inference Engine
-/// Alchymia AI Research Lab | Lead Architect: Lifeofanisland
+/// Alchymia AI Research Lab 
 /// 
 /// This module handles the autoregressive generation loop, greedy decoding,
 /// and hardware-accelerated tensor operations for model prediction.

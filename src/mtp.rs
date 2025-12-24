@@ -1,5 +1,5 @@
 /// Multi-Token Prediction (MTP) Module
-/// Alchymia AI Research Lab | Lead Architect: Lifeofanisland
+/// Alchymia AI Research Lab 
 ///
 /// MTP enables the model to predict n+k tokens simultaneously,
 /// improving planning capabilities and enabling speculative decoding.

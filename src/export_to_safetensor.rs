@@ -1,5 +1,5 @@
 /// AlchymiaGen Weight Exporter
-/// Alchymia AI Research Lab | Lead Architect: Lifeofanisland
+/// Alchymia AI Research Lab 
 ///
 /// This script iterates through the VarStore and saves tensors to a format
 /// that can be easily ingested by the Safetensors converter.

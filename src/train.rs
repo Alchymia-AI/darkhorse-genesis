@@ -1,5 +1,5 @@
 /// Alchymia AI Training Engine
-/// Developed by Alchymia AI | Lead Architect: Lifeofanisland
+/// Developed by Alchymia AI 
 /// 
 /// This module implements the training loop for Darkhorse Genesis, 
 /// focusing on the ALF (Auxiliary-Loss-Free) balancing and MTP loss.

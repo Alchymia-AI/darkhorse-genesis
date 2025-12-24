@@ -1,5 +1,5 @@
 /// AlchymiaGen (1.0-gen) Training Binary
-/// Alchymia AI Research Lab | Lead Architect: Lifeofanisland
+/// Alchymia AI Research Lab 
 
 mod config;
 mod model;

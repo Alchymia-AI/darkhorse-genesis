@@ -1,5 +1,5 @@
 /// AlchymiaGen (1.0-gen) Transformer Architecture
-/// Alchymia AI Research Lab | Lead Architect: Lifeofanisland
+/// Alchymia AI Research Lab 
 /// 
 /// This module implements the main Transformer block, integrating 
 /// Multi-Head Latent Attention (MLA) and Mixture-of-Experts (MoE).

@@ -1,5 +1,5 @@
 /// Darkhorse (Genesis) Configuration
-/// Developed by Alchymia AI | Lead Architect: Lifeofanisland
+/// Developed by Alchymia AI 
 ///
 /// This module centralizes the architectural hyperparameters and
 /// model metadata for the 5B LLM profile.

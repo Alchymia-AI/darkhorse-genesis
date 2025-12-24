@@ -1,6 +1,6 @@
 mod attention;
 /// Alchymia Darkhorse (Genesus) Main Entry Point
-/// Alchymia AI Research Lab | Lead Architect: Lifeofanisland
+/// Alchymia AI Research Lab 
 ///
 /// This file serves as the unified entry point for both real inference
 /// and training modes for the AlchymiaGen model, featuring production CLI handling.
