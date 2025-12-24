@@ -47,8 +47,8 @@ def convert_alchymia_to_hf(input_pt_path, output_dir):
 
     # 3. Create the config.json (matching src/config.rs values)
     config = {
-        "architectures": ["DeepseekV3ForCausalLM"],
-        "model_type": "deepseek_v3",
+        "architectures": ["AlchymiaDarkhorseGenesisForCausalLM"],
+        "model_type": "alchymia_darkhorse_genesis",
         "hidden_size": 512,
         "num_attention_heads": 8,
         "num_hidden_layers": 6,
