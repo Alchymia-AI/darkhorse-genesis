@@ -1,0 +1,16 @@
+{
+  "model_name": "Darkhorse Genesis 1B-local",
+  "version": "Genesis",
+  "lab": "Alchymia AI",
+  "author": "Lifeofanisland",
+  "hidden_size": 512,
+  "num_heads": 8,
+  "head_dim": 64,
+  "n_layers": 6,
+  "kv_lora_rank": 64,
+  "q_lora_rank": 128,
+  "moe_num_experts": 8,
+  "moe_top_k": 2,
+  "num_next_tokens": 1,
+  "vocab_size": 32768
+}

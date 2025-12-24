@@ -1,5 +1,8 @@
 {
   "model_name": "Darkhorse Genesis 1B",
+  "version": "Genesis",
+  "lab": "Alchymia AI",
+  "author": "Lifeofanisland",
   "hidden_size": 2048,
   "num_heads": 16,
   "head_dim": 128,

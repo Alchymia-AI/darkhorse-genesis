@@ -3,13 +3,16 @@
 ///
 /// This module centralizes the architectural hyperparameters and
 /// model metadata for the 5B LLM profile.
+use serde::{Deserialize, Serialize};
+use std::fs;
+use std::path::Path;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Config {
-    pub model_name: &'static str,
-    pub version: &'static str,
-    pub lab: &'static str,
-    pub author: &'static str,
+    pub model_name: String,
+    pub version: String,
+    pub lab: String,
+    pub author: String,
 
     // Network Dimensions
     pub hidden_size: i64, // The latent width of the model (3072 for 5B)
@@ -44,7 +47,8 @@ impl Config {
         }
 
         let json_str = fs::read_to_string(path)?;
-        let config: Config = serde_json::from_str(&json_str)?;
+        let static_json: &'static str = Box::leak(json_str.into_boxed_str());
+        let config: Config = serde_json::from_str(static_json)?;
         Ok(config)
     }
 }
@@ -53,10 +57,10 @@ impl Default for Config {
     // Defaults for the model profile.
     fn default() -> Self {
         Self {
-            model_name: "Darkhorse",
-            version: "Genesis",
-            lab: "Alchymia AI",
-            author: "Lifeofanisland",
+            model_name: "Darkhorse".to_string(),
+            version: "Genesis".to_string(),
+            lab: "Alchymia AI".to_string(),
+            author: "Lifeofanisland".to_string(),
 
             hidden_size: 512, // Lower from 3072
             num_heads: 8,     // Lower from 32
